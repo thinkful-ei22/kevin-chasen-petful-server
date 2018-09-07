@@ -1,7 +1,7 @@
 const express = require('express');
 
 const Queue = require('../classes/queue-class');
-const {peekQueue} = require('../classes/queue-helpers');
+const {peekQueue, displayQueue} = require('../classes/queue-helpers');
 
 const CatQueue = new Queue();
 const DogQueue = new Queue();
@@ -88,7 +88,7 @@ const dogArr = [
   {
     imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
     imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
-    name: 'Zeus',
+    name: 'Zeus' ,
     sex: 'Male',
     age: 3,
     breed: 'Golden Retriever',
@@ -155,19 +155,23 @@ DogQueue.enqueue(dogArr[2]);
 DogQueue.enqueue(dogArr[3]);
 DogQueue.enqueue(dogArr[4]);
 DogQueue.enqueue(dogArr[5]);
+// console.log(JSON.stringify(displayQueue(CatQueue)), null, 2);
+// console.log(JSON.stringify(displayQueue(DogQueue)), null, 2);
 
 router.get('/api/cat', (req, res, next) => {
-  res.json (peekQueue(CatQueue));
+  res.json(peekQueue(CatQueue));
 });
 router.get('/api/dog', (req, res, next) => {
   res.json(peekQueue(DogQueue));
 });
 
 router.delete('/api/cat', (req, res, next) => {
+  console.log(JSON.stringify(displayQueue(CatQueue)), null, 2);
   res.json(CatQueue.dequeue()).sendStatus(200);
 });
 
 router.delete('/api/dog', (req, res, next) => {
+  console.log(JSON.stringify(displayQueue(DogQueue)), null, 2);
   res.json(DogQueue.dequeue()).sendStatus(200);
 });
 
