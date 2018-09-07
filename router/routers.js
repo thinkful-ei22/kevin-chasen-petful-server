@@ -64,7 +64,7 @@ const dogArr = [
     imageDescription: 'A Newfy that is ready for a new Home.',
     name: 'Remington',
     sex: 'Female'  ,
-    age: '2 months',
+    age: '4 months',
     breed: 'Newfoundland',
     story: 'Owner trying to it give away'
   },
